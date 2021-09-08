@@ -37,18 +37,22 @@
     <h2>Add a Coffee</h2>
     <form method="POST" action="/addCoffee">
         <input type="text" class="coffeeBrand" placeholder="coffee brand" name="coffeeBrand" required>
-        <input type="text" class="beanType" placeholder="bean type" name="beanType" required>
+        <select class="beanType" placeholder="bean type" name="beanType" required>
+            <option class="beanType" value="Bean Type" selected="default" disabled>Bean Type</option>
+            <option class="beanType" value="Arabica">Arabica</option>
+            <option class="beanType" value="Columbia">Columbia</option>
+        </select>
         <input type="text" class="roastFlavor" placeholder="roast or flavor" name="roastFlavor" required>
         <button id="submit">Submit</button>
     </form>
     <h2 id="coffee-info">Current Coffee List</h2 class="coffee fade-in">
         <ul >
             <% for (let i = 0; i < info.length; i++) {%>
-                <li class="coffee" data-id='<%=el._id%>'>
-                    <span><%= info[i].coffeeBrand %></span> &#8226; 
-                    <span><%= info[i].beanType %></span> &#8226; 
-                    <span><%= info[i].roastFlavor %></span> &#8226; 
-                    <span class="delete"> Delete </span>
+                <li class="coffee" >
+                    <span><%= info[i].coffeeBrand %></span>&nbsp; &#8226; &nbsp;
+                    <span><%= info[i].beanType %></span> &nbsp; &#8226; &nbsp; 
+                    <span><%= info[i].roastFlavor %></span> &nbsp; &nbsp;
+                    <span class="delete"><i class="fas fa-trash-alt"></i></span>
                 </li>    
 
         <% } %>
@@ -58,4 +62,5 @@
 
     </div> 
     <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/6eb8c8041f.js" crossorigin="anonymous"></script>
     </html>
