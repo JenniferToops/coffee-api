@@ -17,7 +17,7 @@ let db,
 
     MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         .then(client => {
-            console.log('Connected to ${dbName} Database')
+            console.log(`Connected to ${dbName} Database`)
             db = client.db(dbName)
         })
 
@@ -39,16 +39,17 @@ let db,
         .catch(error => console.error(error))
     })
 
-
-
-
-
-
-
-
+    app.delete('/deleteCoffee', (req, res) => {
+        db.collection('coffee').deleteOne({coffeeIdFromJsonFile: req.body.coffeeId})
+        .then(result => {
+            console.log('Coffee Deleted')
+            res.json('Deleted it')
+        })
+        .catch( err => console.log(err))
+    })
 
 
 // run on remote or local environment
 app.listen(process.env.PORT || PORT, () => {
-    console.log('Server running on port ${PORT}')
+    console.log(`Server running on port ${PORT}`)
 })

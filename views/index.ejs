@@ -1,9 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=”en” prefix=”og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta 
+        property=”og:title”
+        content=”Example Title” 
+    />
+    <meta 
+        name=”image” 
+        property=”og:image” 
+        content=”%PUBLIC_URL%/CoffeeAPIScreenshot.png” 
+    />
+    <meta 
+        name=”author” 
+        content=”Example Author” 
+    />
+    <meta 
+        property=”og:description” 
+        content=”Example Description“
+    />
+    <meta 
+        property=”og:url” 
+        content=”https://example.com" 
+    />
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
     <title>Coffee Collection API</title>
@@ -23,12 +44,15 @@
     <h2 id="coffee-info">Current Coffee List</h2 class="coffee fade-in">
         <ul >
             <% for (let i = 0; i < info.length; i++) {%>
-                <li class="coffee">
+                <li class="coffee" data-id='<%=el._id%>'>
                     <span><%= info[i].coffeeBrand %></span> &#8226; 
                     <span><%= info[i].beanType %></span> &#8226; 
-                    <span><%= info[i].roastFlavor %></span>
+                    <span><%= info[i].roastFlavor %></span> &#8226; 
+                    <span class="delete"> Delete </span>
                 </li>    
+
         <% } %>
+
         </ul>
 
 
